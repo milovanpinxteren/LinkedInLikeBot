@@ -15,7 +15,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 # Timeout function
 def timeout_handler(signum, frame):
     raise Exception("Script Timeout: The script took too long to complete.")
