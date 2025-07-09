@@ -13,7 +13,6 @@ import sys
 import platform
 import os
 from dotenv import load_dotenv
-from datetime import datetime, timedelta
 
 # $env:CLIENT_ENV = "orderpiqr"; C:\Code\LinkedInBot\.venv\Scripts\python.exe C:\Code\LinkedInBot\like_bot.py
 
@@ -23,7 +22,9 @@ env_filename = f".env_{env_name}"
 env_path = os.path.join(os.path.dirname(__file__), env_filename)
 like_log_file = os.path.join(os.path.dirname(__file__), f"like_log_{env_name}.txt")
 global liked
+
 liked = 0
+
 
 if not os.path.exists(env_path):
     raise FileNotFoundError(f"Environment file not found: {env_path}")
