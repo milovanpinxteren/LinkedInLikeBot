@@ -17,7 +17,8 @@ from dotenv import load_dotenv
 # $env:CLIENT_ENV = "orderpiqr"; C:\Code\LinkedInBot\.venv\Scripts\python.exe C:\Code\LinkedInBot\like_bot.py
 
 
-env_name = os.getenv("CLIENT_ENV", "default")
+env_name = os.getenv("CLIENT_ENV", "orderpiqr")
+print(env_name)
 env_filename = f".env_{env_name}"
 env_path = os.path.join(os.path.dirname(__file__), env_filename)
 like_log_file = os.path.join(os.path.dirname(__file__), f"like_log_{env_name}.txt")
@@ -117,10 +118,11 @@ def like_posts_from_interesting_people(driver, xpath_label, max_people=25, max_l
                     driver.switch_to.window(driver.window_handles[-1])
                     time.sleep(random.uniform(3, 5))
                     # Like the post via identity
-                    identity_button = driver.find_element(
-                        By.CSS_SELECTOR,
-                        'button[aria-label^="Menu voor schakelen naar een andere identiteit openen wanneer u op deze bijdrage reageert"]'
-                    )
+                    identity_button = driver.find_element(By.CLASS_NAME,"content-admin-identity-toggle-button")
+                    # identity_button = driver.find_element(
+                    #     By.CSS_SELECTOR,
+                    #     'button[aria-label^="Menu voor schakelen naar een andere identiteit openen wanneer u op deze bijdrage reageert"]'
+                    # )
                     identity_button.click()
                     time.sleep(1)
 
